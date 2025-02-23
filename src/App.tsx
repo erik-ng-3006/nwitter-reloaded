@@ -4,7 +4,7 @@ import Home from './routers/home';
 import Profile from './routers/profile';
 import Login from './routers/login';
 import CreateAccount from './routers/create-account';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import { useEffect, useState } from 'react';
 import LoadingScreen from './components/loading-screen';
@@ -46,6 +46,12 @@ body {
 }
 `;
 
+const Wrapper = styled.div`
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+`;
+
 const App = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const init = async () => {
@@ -56,10 +62,10 @@ const App = () => {
 		init();
 	}, []);
 	return (
-		<>
+		<Wrapper>
 			<GlobalStyles />
 			{isLoading ? <LoadingScreen /> : <RouterProvider router={router} />}
-		</>
+		</Wrapper>
 	);
 };
 
