@@ -97,6 +97,7 @@ const CreateAccount = () => {
 				Already have an account? <Link to='/login'>Login &rarr; </Link>
 			</Switcher>
 			<GithubButton />
+			<Link to='/forgot-password'>Forgot password?</Link>
 		</Wrapper>
 	);
 };

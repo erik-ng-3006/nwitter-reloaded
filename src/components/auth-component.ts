@@ -7,6 +7,14 @@ export const Wrapper = styled.div`
 	flex-direction: column;
 	width: 420px;
 	padding: 50px 0px;
+
+	a {
+		color: #1d9bf0;
+		text-decoration: none;
+		&:hover {
+			color: #0d8ae5;
+		}
+	}
 `;
 
 export const Title = styled.h1`
@@ -41,12 +49,4 @@ export const Error = styled.span`
 
 export const Switcher = styled.span`
 	margin-top: 20px;
-
-	a {
-		color: #1d9bf0;
-		text-decoration: none;
-		&:hover {
-			color: #0d8ae5;
-		}
-	}
 `;

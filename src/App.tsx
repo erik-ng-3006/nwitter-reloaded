@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
 import LoadingScreen from './components/loading-screen';
 import { auth } from './firebase';
 import ProtectedRoute from './components/protected-route';
+import { ToastContainer } from 'react-toastify';
+import ForgotPassword from './routers/forgot-password';
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
 	{
 		path: '/create-account',
 		element: <CreateAccount />,
+	},
+	{
+		path: '/forgot-password',
+		element: <ForgotPassword />,
 	},
 ]);
 
@@ -70,6 +76,7 @@ const App = () => {
 		<Wrapper>
 			<GlobalStyles />
 			{isLoading ? <LoadingScreen /> : <RouterProvider router={router} />}
+			<ToastContainer />
 		</Wrapper>
 	);
 };

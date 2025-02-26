@@ -81,6 +81,7 @@ const Login = () => {
 				<Link to='/create-account'>Create one &rarr; </Link>
 			</Switcher>
 			<GithubButton />
+			<Link to='/forgot-password'>Forgot password?</Link>
 		</Wrapper>
 	);
 };
