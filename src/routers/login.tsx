@@ -11,6 +11,7 @@ import {
 	Wrapper,
 	Error,
 } from '../components/auth-component';
+import GithubButton from '../components/github-button';
 
 const Login = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -79,6 +80,7 @@ const Login = () => {
 				Don't have an account?{' '}
 				<Link to='/create-account'>Create one &rarr; </Link>
 			</Switcher>
+			<GithubButton />
 		</Wrapper>
 	);
 };
