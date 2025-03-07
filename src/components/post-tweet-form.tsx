@@ -1,7 +1,8 @@
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, updateDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import { styled } from 'styled-components';
-import { auth, db } from '../firebase';
+import { auth, db, storage } from '../firebase';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 const Form = styled.form`
 	display: flex;
@@ -85,13 +86,26 @@ const PostTweetForm = () => {
 
 		try {
 			setIsLoading(true);
-			await addDoc(collection(db, 'tweets'), {
+			const doc = await addDoc(collection(db, 'tweets'), {
 				tweet,
 				createdAt: Date.now(),
 				username: user.displayName || 'Anonymous',
 				userId: user.uid,
 			});
+
+			if (file) {
+				const locationRef = ref(
+					storage,
+					`tweets/${user.uid}-${user.displayName}/${doc.id}`
+				);
+				const snapshot = await uploadBytes(locationRef, file);
+				const downloadUrl = await getDownloadURL(snapshot.ref);
+				await updateDoc(doc, {
+					image: downloadUrl,
+				});
+			}
 			setTweet('');
+			setFile(null);
 		} catch (error) {
 			console.log(error);
 		} finally {
