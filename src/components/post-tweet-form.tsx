@@ -101,7 +101,7 @@ const PostTweetForm = () => {
 				const snapshot = await uploadBytes(locationRef, file);
 				const downloadUrl = await getDownloadURL(snapshot.ref);
 				await updateDoc(doc, {
-					image: downloadUrl,
+					photo: downloadUrl,
 				});
 			}
 			setTweet('');

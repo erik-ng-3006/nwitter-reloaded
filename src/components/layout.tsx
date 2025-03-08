@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 	padding: 50px 0;
 	width: 100%;
 	max-width: 860px;
-	height: 100px;
+	height: 100%;
 `;
 
 const Menu = styled.div`
