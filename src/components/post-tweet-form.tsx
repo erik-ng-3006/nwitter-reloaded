@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { styled } from 'styled-components';
 import { auth, db, storage } from '../firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { toast } from 'react-toastify';
 
 const Form = styled.form`
 	display: flex;
@@ -73,7 +74,11 @@ const PostTweetForm = () => {
 		const target = e?.target;
 		if (target && target.files) {
 			const { files } = target;
-			if (files && files.length === 1) {
+			if (files && files.length === 1 && files[0]) {
+				if (files[0].size > 1048576) {
+					toast.error('File size must be less than 1MB');
+					return;
+				}
 				setFile(files[0]);
 			}
 		}
